@@ -1,10 +1,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var isNight = false
+    
     var body: some View {
         ZStack {
             
-            BackgroundView(topColor: .blue, bottomColor: .white)
+            BackgroundView(topColor: isNight ? .black : .blue, bottomColor: isNight ? .gray : .white)
             
             VStack {
                 CityTextView(cityName: "Jakarta, Indonesia")
@@ -22,7 +25,7 @@ struct ContentView: View {
                 Spacer()
                 
                 Button {
-                    print("tapped")
+                    isNight.toggle()
                 } label: {
                     Text("Changed day time")
                         .frame(width: 280, height: 50)
